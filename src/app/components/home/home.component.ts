@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.reducer';
 import { Wheater } from 'src/app/models/weather.model';
 
 import * as weatherActions from "../../../store/actions";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styles: [ 'select {  display: initial; }' ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
+  subscribe : Subscription;
   name: string;
   weather: Wheater;
   loading: boolean;
@@ -28,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.store.select('weather')
+    this.subscribe = this.store.select('weather')
     .subscribe( weather => {
       this.weather = weather.weather
       this.loading = weather.loading
@@ -36,6 +38,10 @@ export class HomeComponent implements OnInit {
     })
     this.name = 'London,uk'
     this.showOption()
+  }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe()    
   }
 
   showOption(): void {

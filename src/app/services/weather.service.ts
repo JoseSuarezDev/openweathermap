@@ -11,10 +11,10 @@ export class WeatherService {
   private url = 'http://api.openweathermap.org/data/2.5';
 
   constructor( private http: HttpClient ) { }
-
-  getWeather() {
-    return this.http.get(`${this.url}/weather?q=London,uk&APPID=${this.APPID}`)
-    .pipe(map( (resp : any) => resp ));
+  
+  getList() {
+    return this.http.get(`${this.url}/box/city?bbox=12,32,15,37,10&APPID=${this.APPID}`)
+    .pipe(map( resp => resp ));
   }
 
   getWeatherCity( city: string ) {

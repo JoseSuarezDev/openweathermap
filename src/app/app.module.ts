@@ -18,15 +18,19 @@ import { FeatureRoutingModule, routingComponents } from "./app.route";
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './components/home/home.module';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
+    HomeModule,
     FeatureRoutingModule,
     HttpClientModule,
     FormsModule,

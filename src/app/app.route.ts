@@ -3,10 +3,11 @@ import { NgModule } from "@angular/core";
 
 // Custom Components
 import { HomeComponent } from "./components/home/home.component";
+import { ListComponent } from './components/home/list/list.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    // { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'list', component: ListComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
