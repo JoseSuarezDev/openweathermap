@@ -1,0 +1,60 @@
+<div class="row" *ngIf="loading" >
+    <div class="col">
+        <div class="card-panel teal lighten-2 center-align">
+            <i class="material-icons">sync</i>
+            <h1>Espere...</h1>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="error" >
+    <div class="col">
+        <div class="card-panel red center-align">
+                <i class="material-icons">clear</i>
+            <h2> Error: {{ error.status }} </h2>
+            <p>
+                {{ error.message }}
+                <br><br>
+                {{ error.url }}
+            </p>
+        </div>
+    </div>
+</div>
+
+    
+    
+<div class="row container" *ngIf="!loading && !error">
+
+    <div class="row">        
+        <label>CIUDADES</label>
+        <div class="input-field col s12">            
+            <select [(ngModel)]="name" (change)="showOption()">
+                <option value="" disabled selected>Escoja su opcion</option>
+                <option *ngFor="let item of cities" [ngValue]="item.code">{{item.city}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col s12 m6 offset-m3">
+        
+        <div class="card">
+            <div class="card-image">
+            <img src="https://www.revistaenfoque.cl/wp-content/uploads/2019/06/clima-icono.png">
+            <span class="card-title">{{name}}</span>
+            </div>
+            <div class="card-content">
+                <p> <strong>temp</strong>
+                    {{ weather.temp }} </p>
+                <p> <strong>pressure</strong>
+                    {{ weather.pressure }} </p>
+                <p> <strong>humidity</strong>
+                    {{ weather.humidity }} </p>
+                <p> <strong>temp_min</strong>
+                    {{ weather.temp_min }} </p>
+                <p> <strong>temp_max</strong>
+                    {{ weather.temp_max }} </p>
+            </div>
+        </div>
+    </div>
+
+</div>
