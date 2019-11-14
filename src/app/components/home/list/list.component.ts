@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.reducer';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import * as listActions from "../../../../store/actions";
   styles: [ '.collection .collection-item.avatar { min-height: initial;}' ]
 })
 
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
 
   subscribe : Subscription;
   list = [];
@@ -20,7 +20,6 @@ export class ListComponent implements OnInit {
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit() {
-
     
     this.subscribe = this.store.select('list')
     .subscribe( list => {
@@ -31,7 +30,10 @@ export class ListComponent implements OnInit {
     
     this.store.dispatch( new listActions.GetList()  ) 
 
+  }
 
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe()    
   }
 
 }
