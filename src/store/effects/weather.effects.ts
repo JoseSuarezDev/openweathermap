@@ -16,7 +16,7 @@ export class WeatherEffects {
 
     @Effect()
     getWeather$ = this.actions$.pipe( 
-        ofType( weatherActions.GET_WHEATER ),
+        ofType( weatherActions.GET_WEATHER ),
         switchMap( action => {
             const city = action['city'];
             return this.weatherService.getWeatherCity(city).pipe(

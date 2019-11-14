@@ -1,5 +1,5 @@
 
-export class Wheater {
+export class Weather {
     constructor( 
         public humidity: number,
         public pressure: number,

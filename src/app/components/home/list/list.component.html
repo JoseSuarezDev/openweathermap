@@ -1,1 +1,22 @@
-<p>list works!</p>
+<div class="row">        
+    <label>Buscar por Nombre</label>
+    <div class="input-field col s12">            
+        <input type="text" placeholder="Buscar..." name="filterName" [(ngModel)]='filterName'>
+    </div>
+</div>
+
+<div *ngFor="let item of list | filter:filterName">
+    <ul class="collection">
+        <li class="collection-item avatar">
+            <img src="https://www.revistaenfoque.cl/wp-content/uploads/2019/06/clima-icono.png" alt="" class="circle">
+            <span class="title">{{item.name}}</span>
+            <p>
+                <strong>temp: </strong> {{item.main.humidity}} 
+                <strong>pressure: </strong> {{item.main.pressure}} 
+                <strong>humidity: </strong> {{item.main.humidity}} 
+                <strong>temp_min: </strong> {{item.main.temp_min}} 
+                <strong>temp_max: </strong> {{item.main.temp_max}} 
+            </p>
+        </li>
+    </ul>
+</div>

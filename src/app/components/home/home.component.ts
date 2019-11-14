@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/app.reducer';
-import { Wheater } from 'src/app/models/weather.model';
+import { Weather } from 'src/app/models/weather.model';
 
 import * as weatherActions from "../../../store/actions";
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   subscribe : Subscription;
   name: string;
-  weather: Wheater;
+  weather: Weather;
   loading: boolean;
   error: any;
   cities = [
